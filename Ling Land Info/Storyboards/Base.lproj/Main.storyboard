@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RV5-hi-H0o">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ling Land Info-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="InputViewController" customModule="Ling_Land_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y85-c5-YBC">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-kH-q0m">
+                                        <rect key="frame" x="28" y="28" width="358" height="190.33333333333334"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please insert coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-sO-3bI">
+                                                <rect key="frame" x="0.0" y="0.0" width="358" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="319" placeholderIntrinsicHeight="100" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lEj-7r-9sP">
+                                                <rect key="frame" x="0.0" y="40.333333333333343" width="358" height="100"/>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2va-ib-Zet">
+                                                <rect key="frame" x="0.0" y="160.33333333333334" width="358" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Generate Plan">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="generatePlanClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bcV-rp-Ra2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fTI-kH-q0m" firstAttribute="top" secondItem="y85-c5-YBC" secondAttribute="top" constant="28" id="5nD-rv-Er5"/>
+                                    <constraint firstAttribute="trailing" secondItem="fTI-kH-q0m" secondAttribute="trailing" constant="28" id="Id5-H4-vdI"/>
+                                    <constraint firstAttribute="bottom" secondItem="fTI-kH-q0m" secondAttribute="bottom" constant="28" id="V0W-el-YAy"/>
+                                    <constraint firstItem="fTI-kH-q0m" firstAttribute="centerX" secondItem="y85-c5-YBC" secondAttribute="centerX" id="Y3z-4z-UFY"/>
+                                    <constraint firstItem="fTI-kH-q0m" firstAttribute="leading" secondItem="y85-c5-YBC" secondAttribute="leading" constant="28" id="pzc-EN-Z77"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="y85-c5-YBC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BPW-8i-S24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y85-c5-YBC" secondAttribute="bottom" id="J9Q-Va-NlL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y85-c5-YBC" secondAttribute="trailing" id="W4Q-4L-uSr"/>
+                            <constraint firstItem="y85-c5-YBC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tlY-zh-vwy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ling Land Info" largeTitleDisplayMode="always" id="CT5-HQ-bRC">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="fkp-hS-3a5"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="inputsGroupStackView" destination="lEj-7r-9sP" id="3HU-xW-2kx"/>
+                        <outlet property="scrollView" destination="y85-c5-YBC" id="udd-6l-OYk"/>
+                        <segue destination="3PY-rH-tZe" kind="show" identifier="generate-plan-segue" id="qjg-5r-9TG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="129" y="116"/>
+        </scene>
+        <!--Result-->
+        <scene sceneID="efT-Pn-95f">
+            <objects>
+                <viewController id="3PY-rH-tZe" customClass="MapViewController" customModule="Ling_Land_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rZ5-wa-pxc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-nL-UWj" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" red="1" green="0.88777669270833337" blue="0.86821831597222221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LNo-nL-UWj" firstAttribute="leading" secondItem="rZ5-wa-pxc" secondAttribute="leading" id="Jv7-Mz-r6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="LNo-nL-UWj" secondAttribute="trailing" id="chC-p8-97X"/>
+                            <constraint firstAttribute="bottom" secondItem="LNo-nL-UWj" secondAttribute="bottom" id="gry-D0-sP0"/>
+                            <constraint firstItem="LNo-nL-UWj" firstAttribute="top" secondItem="rZ5-wa-pxc" secondAttribute="top" id="zoX-0m-aMw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="axq-rh-ugC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Result" id="CnY-aM-vUi"/>
+                    <connections>
+                        <outlet property="mapView" destination="LNo-nL-UWj" id="4sw-en-tVP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k31-7d-uzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="117"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="weK-ZL-etz">
+            <objects>
+                <navigationController id="RV5-hi-H0o" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ysW-bx-S7w">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ljK-mx-UWm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Rqe-I0-Kud"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8K-PH-tHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-772" y="118"/>
+        </scene>
+    </scenes>
+</document>
