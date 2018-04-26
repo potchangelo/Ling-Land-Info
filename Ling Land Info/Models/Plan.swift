@@ -23,44 +23,44 @@ class Plan: NSObject {
     var polygonArea: Double {
         var sigma: Double = 0
         for i in 0 ..< self.coordinatesArray.count {
-            let coord0 = self.coordinatesArray[i]
-            var coord1: CLLocationCoordinate2D!
+            let coordinate0 = self.coordinatesArray[i]
+            var coordinate1: CLLocationCoordinate2D!
             if i == self.coordinatesArray.count - 1 {
-                coord1 = self.coordinatesArray[0]
+                coordinate1 = self.coordinatesArray[0]
             }
             else {
-                coord1 = self.coordinatesArray[i+1]
+                coordinate1 = self.coordinatesArray[i+1]
             }
-            sigma += ( coord0.latitude * coord1.longitude ) - ( coord1.latitude * coord0.longitude )
+            sigma += ( coordinate0.latitude * coordinate1.longitude ) - ( coordinate1.latitude * coordinate0.longitude )
         }
         return sigma/2
     }
     
-    var polygonCentroidCoord: CLLocationCoordinate2D {
+    var polygonCentroidCoordinate: CLLocationCoordinate2D {
         let area = self.polygonArea
-        var sigmaCx: Double = 0, sigmaCy: Double = 0
+        var sigmaCenterX: Double = 0, sigmaCenterY: Double = 0
         for i in 0 ..< self.coordinatesArray.count {
-            let coord0 = self.coordinatesArray[i]
-            var coord1: CLLocationCoordinate2D!
+            let coordinate0 = self.coordinatesArray[i]
+            var coordinate1: CLLocationCoordinate2D!
             if i == self.coordinatesArray.count - 1 {
-                coord1 = self.coordinatesArray[0]
+                coordinate1 = self.coordinatesArray[0]
             }
             else {
-                coord1 = self.coordinatesArray[i+1]
+                coordinate1 = self.coordinatesArray[i+1]
             }
-            let backPart = ( coord0.latitude * coord1.longitude - coord1.latitude * coord0.longitude )
-            sigmaCx += ( coord0.latitude + coord1.latitude ) * backPart
-            sigmaCy += ( coord0.longitude + coord1.longitude ) * backPart
+            let backPart = ( coordinate0.latitude * coordinate1.longitude - coordinate1.latitude * coordinate0.longitude )
+            sigmaCenterX += ( coordinate0.latitude + coordinate1.latitude ) * backPart
+            sigmaCenterY += ( coordinate0.longitude + coordinate1.longitude ) * backPart
         }
-        let cx = sigmaCx / ( 6 * area ), cy = sigmaCy / ( 6 * area )
-        return CLLocationCoordinate2DMake(cx, cy)
+        let centerX = sigmaCenterX / ( 6 * area ), centerY = sigmaCenterY / ( 6 * area )
+        return CLLocationCoordinate2DMake(centerX, centerY)
     }
     
     // MARK: -- UTM latitudinal zone
     
     var utmLatZone: Character {
         let zoneChars = "CDEFGHJKLMNPQRSTUVWX"
-        let latitude = self.polygonCentroidCoord.latitude
+        let latitude = self.polygonCentroidCoordinate.latitude
         
         // If latitude is around north or south pole, just return "Z"
         if latitude < -80 || latitude > 84 { return "Z" }
@@ -94,9 +94,9 @@ class Plan: NSObject {
         // Create polygon path & anchors markers
         let polygonPath = GMSMutablePath()
         var polygonAnchorsMarkersArray = [GMSMarker]()
-        for coord in self.coordinatesArray {
-            polygonPath.add(coord)
-            let marker = GMSMarker(position: coord)
+        for coordinate in self.coordinatesArray {
+            polygonPath.add(coordinate)
+            let marker = GMSMarker(position: coordinate)
             marker.icon = GMSMarker.markerImage(with: self.polygonAnchorsMarkerColor)
             marker.opacity = 0.65
             polygonAnchorsMarkersArray.append(marker)
@@ -117,8 +117,8 @@ class Plan: NSObject {
         // Draw polygon centroid marker to map
         // Only draw if coordinates count >= 3
         if self.coordinatesArray.count >= 3 {
-            let polygonCentroidMarker = GMSMarker(position: self.polygonCentroidCoord)
-            let latLonCoordinate = LatLonCoordinate(latiudinalDegrees: self.polygonCentroidCoord.latitude, longitudinalDegrees: self.polygonCentroidCoord.longitude)
+            let polygonCentroidMarker = GMSMarker(position: self.polygonCentroidCoordinate)
+            let latLonCoordinate = LatLonCoordinate(latiudinalDegrees: self.polygonCentroidCoordinate.latitude, longitudinalDegrees: self.polygonCentroidCoordinate.longitude)
             let utmPoint = UTMConverter(datum: .wgs84).utmCoordinatesFrom(coordinates: latLonCoordinate)
             let longZone = utmPoint.zone
             let easting = String(format: "%.2f", utmPoint.easting)
@@ -129,8 +129,8 @@ class Plan: NSObject {
         }
     }
     
-    func addCoordinate(_ coord: CLLocationCoordinate2D) {
-        self.coordinatesArray.append(coord)
+    func addCoordinate(_ coordinate: CLLocationCoordinate2D) {
+        self.coordinatesArray.append(coordinate)
     }
     
 }

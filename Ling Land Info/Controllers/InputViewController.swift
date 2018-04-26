@@ -18,11 +18,11 @@ class InputViewController: UIViewController {
     // MARK: Variables : Storyboard UI
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var inputsGroupStackView: UIStackView!
+    @IBOutlet weak var inputsStackViewGroup: UIStackView!
     
     // MARK: - Constant
     
-    let inputsGroupCount = 4
+    let inputsStackViewCount = 4
     let generatePlanSegue = "generate-plan-segue"
     
     // TODO: -- Sample Data, uncomment for quick test
@@ -43,9 +43,9 @@ class InputViewController: UIViewController {
         // Load each coordinate inputs stack view from xib file (create 4 views)
         // Into storyboard inputs group stack view
         // And save references to all inputs, for getting data
-        for i in 1 ... self.inputsGroupCount {
+        for i in 1 ... self.inputsStackViewCount {
             let inputsStackView = UINib(nibName: "InputsStackView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! InputsStackView
-            inputsStackView.inputsGroupLabel.text = "Coordinate #\(i)"
+            inputsStackView.fieldsLabel.text = "Coordinate #\(i)"
             
             inputsStackView.xTextField.delegate = self
             inputsStackView.yTextField.delegate = self
@@ -56,7 +56,7 @@ class InputViewController: UIViewController {
             inputsStackView.xTextField.text = "\(data["x"]!)"
             inputsStackView.yTextField.text = "\(data["y"]!)"*/
             
-            self.inputsGroupStackView.addArrangedSubview(inputsStackView)
+            self.inputsStackViewGroup.addArrangedSubview(inputsStackView)
         }
     }
     
@@ -102,16 +102,16 @@ class InputViewController: UIViewController {
         self.scrollView.contentInset = contentInset
     }
     
-    // MARK: - Functions : storyboard UI actions
+    // MARK: - Functions : Storyboard UI actions
     
     @IBAction func generatePlanClicked(_ sender: UIButton) {
         self.view.endEditing(true)
         self.newPlan = Plan()
-        for view in self.inputsGroupStackView.subviews {
+        for view in self.inputsStackViewGroup.subviews {
             guard let inputsStackView = view as? InputsStackView else { continue }
             guard let x = Double(inputsStackView.xTextField.text!), let y = Double(inputsStackView.yTextField.text!) else { continue }
-            let coord = CLLocationCoordinate2DMake(x, y)
-            newPlan?.addCoordinate(coord)
+            let coordinate = CLLocationCoordinate2DMake(x, y)
+            newPlan?.addCoordinate(coordinate)
         }
         performSegue(withIdentifier: self.generatePlanSegue, sender: self)
     }

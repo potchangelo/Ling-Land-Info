@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y85-c5-YBC">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y85-c5-YBC">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-kH-q0m">
@@ -69,7 +69,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="fkp-hS-3a5"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="inputsGroupStackView" destination="lEj-7r-9sP" id="3HU-xW-2kx"/>
+                        <outlet property="inputsStackViewGroup" destination="lEj-7r-9sP" id="3HU-xW-2kx"/>
                         <outlet property="scrollView" destination="y85-c5-YBC" id="udd-6l-OYk"/>
                         <segue destination="3PY-rH-tZe" kind="show" identifier="generate-plan-segue" id="qjg-5r-9TG"/>
                     </connections>

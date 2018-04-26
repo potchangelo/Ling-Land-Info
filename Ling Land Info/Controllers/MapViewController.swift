@@ -11,7 +11,7 @@ import GoogleMaps
 
 class MapViewController: UIViewController {
     
-    // MARK: - Variables : received
+    // MARK: - Variables : Received
     
     var plan: Plan!
     
@@ -36,7 +36,7 @@ class MapViewController: UIViewController {
     
     func generatePlanOnMap() {
         if self.plan.coordinatesArray.count >= 3 {
-            self.mapView.camera = GMSCameraPosition.camera(withTarget: self.plan.polygonCentroidCoord, zoom: self.defaultZoom)
+            self.mapView.camera = GMSCameraPosition.camera(withTarget: self.plan.polygonCentroidCoordinate, zoom: self.defaultZoom)
         }
         else if self.plan.coordinatesArray.count > 0 {
             self.mapView.camera = GMSCameraPosition.camera(withTarget: self.plan.coordinatesArray[0], zoom: self.defaultZoom)

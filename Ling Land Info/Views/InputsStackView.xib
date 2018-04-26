@@ -37,7 +37,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="F03-2z-90g"/>
             <connections>
-                <outlet property="inputsGroupLabel" destination="Vo5-pq-DyK" id="DDB-bD-4Fx"/>
+                <outlet property="fieldsLabel" destination="Vo5-pq-DyK" id="DDB-bD-4Fx"/>
                 <outlet property="xTextField" destination="b94-ll-1nN" id="dMd-HG-BE9"/>
                 <outlet property="yTextField" destination="zoy-6I-sjk" id="VqK-6b-Eta"/>
             </connections>
