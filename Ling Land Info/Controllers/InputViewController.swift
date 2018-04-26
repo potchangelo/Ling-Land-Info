@@ -27,12 +27,12 @@ class InputViewController: UIViewController {
     
     // TODO: -- Sample Data, uncomment for quick test
     
-    let sampleData: [[String: Double]] = [
+    /*let sampleData: [[String: Double]] = [
         ["x": 13.798708, "y": 100.542236],
         ["x": 13.798853, "y": 100.544133],
         ["x": 13.801279, "y": 100.544950],
         ["x": 13.802988, "y": 100.542164]
-    ]
+    ]*/
     
     // MARK: - Functions : Lifecycles
 
@@ -51,9 +51,10 @@ class InputViewController: UIViewController {
             inputsStackView.yTextField.delegate = self
             
             // TODO: -- Sample Data, uncomment for quick test
-            let data = self.sampleData[i-1]
+            
+            /*let data = self.sampleData[i-1]
             inputsStackView.xTextField.text = "\(data["x"]!)"
-            inputsStackView.yTextField.text = "\(data["y"]!)"
+            inputsStackView.yTextField.text = "\(data["y"]!)"*/
             
             self.inputsGroupStackView.addArrangedSubview(inputsStackView)
         }

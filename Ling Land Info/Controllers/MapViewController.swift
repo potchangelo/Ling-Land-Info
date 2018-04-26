@@ -35,8 +35,12 @@ class MapViewController: UIViewController {
     // MARK: - Functions
     
     func generatePlanOnMap() {
-        let camera = GMSCameraPosition.camera(withTarget: self.plan.polygonCentroidCoord, zoom: self.defaultZoom)
-        self.mapView.camera = camera
+        if self.plan.coordinatesArray.count >= 3 {
+            self.mapView.camera = GMSCameraPosition.camera(withTarget: self.plan.polygonCentroidCoord, zoom: self.defaultZoom)
+        }
+        else if self.plan.coordinatesArray.count > 0 {
+            self.mapView.camera = GMSCameraPosition.camera(withTarget: self.plan.coordinatesArray[0], zoom: self.defaultZoom)
+        }
         self.mapView.mapType = .satellite
         self.plan.addToMapView(self.mapView)
     }

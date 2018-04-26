@@ -115,7 +115,7 @@ class Plan: NSObject {
         }
         
         // Draw polygon centroid marker to map
-        // Only if coordinates count >= 3
+        // Only draw if coordinates count >= 3
         if self.coordinatesArray.count >= 3 {
             let polygonCentroidMarker = GMSMarker(position: self.polygonCentroidCoord)
             let latLonCoordinate = LatLonCoordinate(latiudinalDegrees: self.polygonCentroidCoord.latitude, longitudinalDegrees: self.polygonCentroidCoord.longitude)
